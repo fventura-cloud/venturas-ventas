@@ -3,9 +3,9 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
-// Initializations
-
+// Initialization
 const app = express();
+require('./database');
 // ME QUEDE EN 0:24:43
 // Settings
 app.set('port', process.env.PORT || 3000);
@@ -36,6 +36,7 @@ app.use(require('./routes/notes'));
 app.use(require('./routes/users'));
 
 // Static Files *********
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Server is listening ********
 

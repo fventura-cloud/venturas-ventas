@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', 
-function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.send("Index");
   next();
 });
 
-                                                       //QUEDE 30:47
+router.get('/about', function(req, res, next) {
+  res.send("About");
+  next();
+});
+
 
 module.exports = router;
