@@ -27,6 +27,7 @@ router.get('/prods/add', function(req, res) {  //url inventada
       // res.send("ok"); //En vez de este. Guardare los datos en la BD.
       const newProd = new Prod({title, description}); //newProd es objeto producto pero no en BD
       await newProd.save();  // *** 1:22:59 ****
+      req.flash('success_msg', 'Product added succesfully');
       res.redirect('/prods');
     }
       });
@@ -43,16 +44,18 @@ router.get('/prods', async function(req, res) {  //url inventada
      res.render('prods/edit-prod', {prodEdit});
    })
 
-   router.put('/prods/edit-prod/:id', async function(req,res){
+   router.put('/prods/edit-prod/:id', async function(req,res){      //Done also using AJAX
     const {title, description} = req.body;
     await Prod.findByIdAndUpdate(req.params.id, {title, description});
+    req.flash('success_msg', 'Product updated succesfully'); //ver Global Variables in index.js
     res.redirect('/prods');
   });
 
   router.delete('/prods/delete/:id', async function(req,res){
     await Prod.findByIdAndDelete(req.params.id);
+    req.flash('success_msg', 'Product deleted succesfully');
     //console.log(req.params.id)
-    res.send("OK")
+    res.redirect('/prods');
   });
 
 module.exports = router;

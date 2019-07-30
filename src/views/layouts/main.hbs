@@ -21,6 +21,8 @@
     <p>Navegacion</p>
     
     <main class = "container">
+        {{> messages}}  <!--asi si llama a views/partials/messages.hbs -->
+        {{> errors}}    <!-- idem views/partials/errors.hbs -->
         {{{ body }}}
     </main>
 
