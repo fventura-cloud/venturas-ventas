@@ -18,9 +18,9 @@
 </head>
 <body>
     
-    <p>Navegacion</p>
+    {{> navigation }}
     
-    <main class = "container">
+    <main class = "container p-4">
         {{> messages}}  <!--asi si llama a views/partials/messages.hbs -->
         {{> errors}}    <!-- idem views/partials/errors.hbs -->
         {{{ body }}}
